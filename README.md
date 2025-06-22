@@ -46,6 +46,8 @@ dependencies:
 
 ### 📆 DateTime Extensions
 
+```dart
+
 final now = DateTime.now();
 
 now.format();                                        // 22 Jun 2025
@@ -56,11 +58,17 @@ now.fullDateTime;                                    // 22 Jun 2025, 08:30 AM
 now.isToday;                                         // true or false
 now.isSameDate(DateTime(2025, 6, 22));               // true
 
+```
+
 
 ### ⏳ Duration Extension
+```dart
 Duration(seconds: 75).formatted;       // 01:15
 
+```
 ### 🧱 BuildContext Extensions
+
+```dart
 context.width;                         // Screen width
 context.height;                        // Screen height
 
@@ -76,8 +84,12 @@ context.copyToClipboard("Copied!", successMessage: "Text copied"); // Copy to cl
 
 context.showLoader(message: "Loading..."); // Show loader
 context.hideLoader();                  // Hide loader
+```
+
 
 ### 🔁 Navigation Extensions
+
+```dart
 context.push(MyNewPage());                  // Push a new page
 context.pushReplacement(MyOtherPage());     // Replace current page
 context.pop();                               // Go back
@@ -87,40 +99,64 @@ someAsyncFunction(),
 message: "Processing..."
 ); // Show loader while future runs
 
+```
+
 ### 📦 Iterable Extension
+```dart
 ['apple', 'banana', 'grape'].mapIndexed((i, val) => '$i: $val');
 // Output: ['0: apple', '1: banana', '2: grape']
 
+```
+
 ### 🎨 Color Extension
+
+```dart
 Colors.blue.toHex();                        // #FF2196F3
 Colors.green.toHex(leadingHashSign: false); // FF4CAF50
 
+```
+
 ### 🧩 Widget Extensions
+
+```dart
 Text('Click Me').onTap(() => print('Tapped!'));           // Tap handler
 
 Container().paddingAll(8);                                // Padding on all sides
 Text('Custom').paddingOnly(left: 12, top: 8);             // Specific side padding
 Text('Symmetric').paddingSymmetric(horizontal: 16);       // Horizontal/Vertical
 
+```
+
 ### 📐 Spacing & EdgeInsets Extensions
+```dart
 16.spacingY();                     // SizedBox(height: 16)
 8.spacingX();                      // SizedBox(width: 8)
 
 12.0.toAll;                        // EdgeInsets.all(12)
 10.0.toSymmetric;                 // EdgeInsets.symmetric(horizontal: 10, vertical: 10)
 
+```
+
 ### 😀 Emoji Replacement
+
+```dart
 'I love :pizza: and :fries:'.withEmojis();        // I love 🍕 and 🍟
 'Greetings from :india:'.withEmojis();            // Greetings from 🇮🇳
+```
 
 ### 📋 Clipboard Utility
+```dart
 context.copyToClipboard('Secret Key', successMessage: 'Copied to clipboard!');
-
+```
 
 ### 🧠 Debug Logging
+```dart
 'Something went wrong'.log();                     // Logs to debug console
 'Page Loaded'.log(tag: 'INIT');                   // [INIT] Page Loaded
+```
 
+### 📌 More Coming Soon...
+We’re continuously improving Mplix – more utility extensions, emoji packs, and integration widgets are on the way!
 
 
 
