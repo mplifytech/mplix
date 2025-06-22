@@ -37,16 +37,15 @@ extension ExPadding on Widget {
     double top = 0,
     double right = 0,
     double bottom = 0,
-  }) =>
-      Padding(
-        padding: EdgeInsets.only(
-          left: left,
-          top: top,
-          right: right,
-          bottom: bottom,
-        ),
-        child: this,
-      );
+  }) => Padding(
+    padding: EdgeInsets.only(
+      left: left,
+      top: top,
+      right: right,
+      bottom: bottom,
+    ),
+    child: this,
+  );
 }
 
 /// Extension on [Iterable] to provide indexed mapping.

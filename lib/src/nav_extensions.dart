@@ -38,9 +38,9 @@ extension ExFutureDialog on BuildContext {
   /// context.withLoadingDialog(Future.delayed(Duration(seconds: 2)));
   /// ```
   Future<T> withLoadingDialog<T>(
-      Future<T> future, {
-        String message = "Loading...",
-      }) async {
+    Future<T> future, {
+    String message = "Loading...",
+  }) async {
     showLoader(message: message);
     try {
       return await future;

@@ -34,12 +34,12 @@ extension ExSnackbar on BuildContext {
   /// context.showSnackbar('This is a message');
   /// ```
   void showSnackbar(
-      String message, {
-        Duration duration = const Duration(seconds: 2),
-      }) {
-    ScaffoldMessenger.of(this).showSnackBar(
-      SnackBar(content: Text(message), duration: duration),
-    );
+    String message, {
+    Duration duration = const Duration(seconds: 2),
+  }) {
+    ScaffoldMessenger.of(
+      this,
+    ).showSnackBar(SnackBar(content: Text(message), duration: duration));
   }
 }
 
@@ -55,16 +55,17 @@ extension ExLoader on BuildContext {
     showDialog(
       context: this,
       barrierDismissible: false,
-      builder: (_) => Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SpinKitRipple(size: 50, color: theme.primaryColor),
-            const SizedBox(height: 12),
-            Text(message),
-          ],
-        ),
-      ),
+      builder:
+          (_) => Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SpinKitRipple(size: 50, color: theme.primaryColor),
+                const SizedBox(height: 12),
+                Text(message),
+              ],
+            ),
+          ),
     );
   }
 
