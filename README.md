@@ -35,12 +35,14 @@ dependencies:
 
 ### 📝 String Extensions
 
+```dart
 'flutter dev'.capitalize();                          // Flutter dev
 'flutter is cool'.toTitleCase();                     // Flutter Is Cool
 'hello world. this is flutter.'.capitalizeSentences(); // Hello world. This is flutter.
 '123'.toInt();                                       // 123
 '12.34'.toDouble();                                  // 12.34
-'Flutter ❤️ :pizza: from :india:'.withEmojis();      // Flutter ❤️ 🍕 from 🇮🇳
+'Flutter ❤️ :pizza: from :india:'.withEmojis();      // Flutter ❤️ 🍕 from 🇮🇳\
+```
 
 ### 📆 DateTime Extensions
 
