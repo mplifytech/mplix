@@ -7,3 +7,6 @@
 
 ## 0.0.3
 * Formatting issues resolved.
+
+## 0.0.4
+* Dart version updated.
