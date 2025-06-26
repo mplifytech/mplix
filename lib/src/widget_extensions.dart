@@ -290,6 +290,7 @@ extension ExTapEffect on Widget {
 
 /// Extension on [Widget] to apply a Gaussian blur effect using [BackdropFilter].
 extension ExBlur on Widget {
+  /// Extension on [Widget] to apply a Gaussian blur effect using [BackdropFilter].
   Widget blurred({double sigma = 10}) {
     return ClipRect(
       child: BackdropFilter(
@@ -337,7 +338,7 @@ extension ExGlassCard on Widget {
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(radius),
-            border: Border.all(color: borderColor.withOpacity(0.3)),
+            border: Border.all(color: borderColor.withValues(alpha: 0.3)),
           ),
           child: this,
         ),

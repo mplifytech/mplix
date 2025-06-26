@@ -1,6 +1,6 @@
 name: mplix
 description: "A collection of useful Flutter and Dart extensions to simplify common tasks."
-version: 0.0.5
+version: 0.0.6
 repository: https://github.com/mplifytech/mplix
 
 environment:

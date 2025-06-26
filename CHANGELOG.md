@@ -13,3 +13,6 @@
 
 ## 0.0.5
 *  Added more widget extensions: animations, blur, tap effects, glass cards, and more — all minimal, reusable, and customizable.
+
+## 0.0.6
+*  Added more widget extensions: animations, blur, tap effects, glass cards, and more — all minimal, reusable, and customizable.

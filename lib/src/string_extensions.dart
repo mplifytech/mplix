@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mplix/src/context_extensions.dart';
@@ -83,5 +85,63 @@ extension ExEmojiReplace on String {
       final key = match.group(1)!;
       return _emojiMap[key] ?? match.group(0)!;
     });
+  }
+}
+
+/// easy to use Image card, ready to use.
+extension ExImageCard on String {
+  /// Creates a customizable image card with rounded corners, shadow, and tap effect.
+  ///
+  /// Pass asset path, network URL, or local file path.
+  Widget asImageCard({
+    double? height,
+    double? width,
+    double radius = 16,
+    BoxFit fit = BoxFit.cover,
+    bool shadow = true,
+    VoidCallback? onTap,
+    EdgeInsetsGeometry padding = EdgeInsets.zero,
+    AlignmentGeometry alignment = Alignment.center,
+    Color? backgroundColor,
+    BoxBorder? border,
+  }) {
+    ImageProvider imageProvider;
+
+    if (startsWith('http') || startsWith('https')) {
+      imageProvider = NetworkImage(this);
+    } else if (startsWith('/') || startsWith('file://')) {
+      imageProvider = FileImage(File(this));
+    } else {
+      imageProvider = AssetImage(this);
+    }
+
+    Widget image = Container(
+      height: height,
+      width: width,
+      alignment: alignment,
+      padding: padding,
+      decoration: BoxDecoration(
+        color: backgroundColor ?? Colors.white,
+        image: DecorationImage(image: imageProvider, fit: fit),
+        borderRadius: BorderRadius.circular(radius),
+        border: border,
+        boxShadow:
+            shadow
+                ? [
+                  const BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 8,
+                    offset: Offset(0, 4),
+                  ),
+                ]
+                : null,
+      ),
+    );
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(radius),
+      child:
+          onTap != null ? GestureDetector(onTap: onTap, child: image) : image,
+    );
   }
 }

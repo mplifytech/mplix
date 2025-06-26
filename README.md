@@ -136,8 +136,14 @@ Text('Glass Card').asGlassCard();                         // Frosted glass blur 
 
 Image.asset('pic.png').clipRounded(12);                                       // Clip with corner radius
 
-Image.network(url).clipRounded(12)
-    .onImageTapPreview(context, imageProvider: NetworkImage(url)); // Zoomable full preview
+Image.network(url).clipRounded(12).onImageTapPreview(context, imageProvider: NetworkImage(url)); // Zoomable full preview
+
+'https://picsum.photos/800/300'.asImageCard(
+height: 180,
+radius: 20,
+shadow: true,
+onTap: () => print('Image tapped'),
+), //resuable image card, (asset,network or file image)
 
 
 ```
