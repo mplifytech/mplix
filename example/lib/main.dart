@@ -73,9 +73,7 @@ class DemoHomePage extends StatelessWidget {
                 Colors.teal.toHex(),
                 style: const TextStyle(color: Colors.white),
               ),
-            ).fadeIn()
-                .paddingAll(8)
-                .asCard(),
+            ).fadeIn().paddingAll(8).asCard(),
 
             20.spacingY(),
             _sectionTitle('📦 Iterable Extension'),
@@ -163,26 +161,25 @@ class DemoHomePage extends StatelessWidget {
 
             20.spacingY(),
             _sectionTitle('🖼 clipRounded() + onImageTapPreview()'),
-            Image.network(
-              'https://picsum.photos/300/200',
-              fit: BoxFit.cover,
-            )
+            Image.network('https://picsum.photos/300/200', fit: BoxFit.cover)
                 .clipRounded(16)
-                .onImageTapPreview(context,imageProvider: NetworkImage('https://picsum.photos/300/200')),
+                .onImageTapPreview(
+                  context,
+                  imageProvider: NetworkImage('https://picsum.photos/300/200'),
+                ),
 
             20.spacingY(),
             _sectionTitle('🎞️ Animation & Effects Extensions'),
 
-            Text('This fades in nicely')
-                .fadeIn()
-                .paddingAll(8)
-                .asCard(),
+            Text('This fades in nicely').fadeIn().paddingAll(8).asCard(),
 
             10.spacingY(),
 
-            Icon(CupertinoIcons.heart_fill, color: Colors.red, size: 80)
-                .tapScale(onTap: () => '❤️ Liked!'.log()),
-
+            Icon(
+              CupertinoIcons.heart_fill,
+              color: Colors.red,
+              size: 80,
+            ).tapScale(onTap: () => '❤️ Liked!'.log()),
 
             10.spacingY(),
 
@@ -200,7 +197,10 @@ class DemoHomePage extends StatelessWidget {
                     color: Colors.white.withValues(alpha: 0.1),
                     child: Text(
                       'Blurred Overlay Text',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ).blurred(sigma: 8),
                   ),
                 ),
@@ -211,18 +211,18 @@ class DemoHomePage extends StatelessWidget {
             Text(
               'Beautiful Glass Card',
               style: const TextStyle(fontSize: 18, color: Colors.white),
-            ).asGlassCard(height: 300,width: 300,color: Colors.pinkAccent.withValues(alpha: 0.3)),
+            ).asGlassCard(
+              height: 300,
+              width: 300,
+              color: Colors.pinkAccent.withValues(alpha: 0.3),
+            ),
 
             10.spacingY(),
-            Text('Soft UI')
-                .asNeumorphic()
-                .paddingAll(16),
+            Text('Soft UI').asNeumorphic().paddingAll(16),
 
             Text('Gradient Card')
                 .asGradientCard(colors: [Colors.orange, Colors.deepOrange])
                 .paddingAll(16),
-
-
           ],
         ),
       ),

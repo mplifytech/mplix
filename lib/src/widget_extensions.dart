@@ -102,7 +102,6 @@ extension ExDebugLog on Object {
   }
 }
 
-
 /// Extension on [Widget] to wrap it in a card-like [Container] with rounded corners,
 /// padding, background color, optional shadow, border, and alignment.
 ///
@@ -157,7 +156,6 @@ extension ExCardContainer on Widget {
   }
 }
 
-
 /// Extension on [Widget] (typically an [Image]) to clip it with rounded corners
 /// using a [ClipRRect].
 ///
@@ -173,13 +171,9 @@ extension ExClipImage on Widget {
   /// Image.network(url).clipRounded(12);
   /// ```
   Widget clipRounded(double radius) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(radius),
-      child: this,
-    );
+    return ClipRRect(borderRadius: BorderRadius.circular(radius), child: this);
   }
 }
-
 
 /// Extension on [Widget] (specifically an [Image]) that makes it tappable,
 /// opening a full-screen zoomable preview using [InteractiveViewer].
@@ -199,45 +193,48 @@ extension ExImageZoomPreview on Widget {
   /// - [previewSize]: If provided, uses a fixed size for the image preview instead of full screen.
   ///   Use `Size.infinite` or skip to use full screen.
   Widget onImageTapPreview(
-      BuildContext context, {
-        required ImageProvider imageProvider,
-        double minScale = 1.0,
-        double maxScale = 4.0,
-        Size? previewSize,
-      }) {
+    BuildContext context, {
+    required ImageProvider imageProvider,
+    double minScale = 1.0,
+    double maxScale = 4.0,
+    Size? previewSize,
+  }) {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
             fullscreenDialog: true,
-            builder: (_) => Scaffold(
-              backgroundColor: Colors.black,
-              appBar: AppBar(
-                backgroundColor: Colors.transparent,
-                iconTheme: const IconThemeData(color: Colors.white),
-                elevation: 0,
-              ),
-              body: Center(
-                child: InteractiveViewer(
-                  minScale: minScale,
-                  maxScale: maxScale,
-                  child: previewSize != null
-                      ? SizedBox(width: previewSize.width, height: previewSize.height,
-                    child: FittedBox(
-                      fit: BoxFit.contain,
-                      child: Image(image: imageProvider),
-                    ),
-                  )
-                      : SizedBox.expand(
-                    child: FittedBox(
-                      fit: BoxFit.contain,
-                      child: Image(image: imageProvider),
+            builder:
+                (_) => Scaffold(
+                  backgroundColor: Colors.black,
+                  appBar: AppBar(
+                    backgroundColor: Colors.transparent,
+                    iconTheme: const IconThemeData(color: Colors.white),
+                    elevation: 0,
+                  ),
+                  body: Center(
+                    child: InteractiveViewer(
+                      minScale: minScale,
+                      maxScale: maxScale,
+                      child:
+                          previewSize != null
+                              ? SizedBox(
+                                width: previewSize.width,
+                                height: previewSize.height,
+                                child: FittedBox(
+                                  fit: BoxFit.contain,
+                                  child: Image(image: imageProvider),
+                                ),
+                              )
+                              : SizedBox.expand(
+                                child: FittedBox(
+                                  fit: BoxFit.contain,
+                                  child: Image(image: imageProvider),
+                                ),
+                              ),
                     ),
                   ),
-
                 ),
-              ),
-            ),
           ),
         );
       },
@@ -245,7 +242,6 @@ extension ExImageZoomPreview on Widget {
     );
   }
 }
-
 
 /// Extension on [Widget] to provide simple animation effects.
 extension ExAnimations on Widget {
@@ -263,7 +259,6 @@ extension ExAnimations on Widget {
     );
   }
 }
-
 
 /// Extension on [Widget] to add a scale-down animation on tap (similar to TikTok buttons).
 extension ExTapEffect on Widget {
@@ -304,7 +299,6 @@ extension ExBlur on Widget {
     );
   }
 }
-
 
 /// Extension on [Widget] to wrap it in a glassmorphic (blurred and translucent) card.
 ///
@@ -423,7 +417,8 @@ extension ExGradientCard on Widget {
       decoration: BoxDecoration(
         gradient: LinearGradient(begin: begin, end: end, colors: colors),
         borderRadius: BorderRadius.circular(radius),
-        boxShadow: shadow ??
+        boxShadow:
+            shadow ??
             [
               const BoxShadow(
                 color: Colors.black26,
@@ -436,7 +431,3 @@ extension ExGradientCard on Widget {
     );
   }
 }
-
-
-
-
