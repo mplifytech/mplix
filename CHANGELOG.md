@@ -10,3 +10,6 @@
 
 ## 0.0.4
 * Dart version updated.
+
+## 0.0.5
+*  Added more widget extensions: animations, blur, tap effects, glass cards, and more — all minimal, reusable, and customizable.

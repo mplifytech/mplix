@@ -123,7 +123,22 @@ Text('Click Me').onTap(() => print('Tapped!'));           // Tap handler
 
 Container().paddingAll(8);                                // Padding on all sides
 Text('Custom').paddingOnly(left: 12, top: 8);             // Specific side padding
-Text('Symmetric').paddingSymmetric(horizontal: 16);       // Horizontal/Vertical
+Text('Symmetric').paddingSymmetric(horizontal: 16); // Horizontal/Vertical
+Text('Fade In').fadeIn();                                 // Fade-in animation
+
+Icon(Icons.favorite).tapScale(onTap: () {});              // Tap shrink animation
+
+Text('Soft UI').asNeumorphic();                           // Neumorphic card style
+
+Text('Gradient Card').asGradientCard();                   // Gradient background card
+
+Text('Glass Card').asGlassCard();                         // Frosted glass blur card
+
+Image.asset('pic.png').clipRounded(12);                                       // Clip with corner radius
+
+Image.network(url).clipRounded(12)
+    .onImageTapPreview(context, imageProvider: NetworkImage(url)); // Zoomable full preview
+
 
 ```
 

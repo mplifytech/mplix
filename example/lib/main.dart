@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mplix/mplix.dart';
 
@@ -72,7 +73,9 @@ class DemoHomePage extends StatelessWidget {
                 Colors.teal.toHex(),
                 style: const TextStyle(color: Colors.white),
               ),
-            ),
+            ).fadeIn()
+                .paddingAll(8)
+                .asCard(),
 
             20.spacingY(),
             _sectionTitle('📦 Iterable Extension'),
@@ -142,6 +145,84 @@ class DemoHomePage extends StatelessWidget {
               },
               child: const Text('Log to Debug Console'),
             ),
+
+            20.spacingY(),
+            _sectionTitle('🪪 asCard() Demo'),
+            Row(
+              children: [
+                const Icon(Icons.lightbulb_outline, color: Colors.deepPurple),
+                8.spacingX(),
+                const Text('This is inside a card'),
+              ],
+            ).asCard(
+              color: Colors.deepPurple[50]!,
+              radius: 16,
+              padding: const EdgeInsets.all(16),
+              margin: const EdgeInsets.symmetric(vertical: 8),
+            ),
+
+            20.spacingY(),
+            _sectionTitle('🖼 clipRounded() + onImageTapPreview()'),
+            Image.network(
+              'https://picsum.photos/300/200',
+              fit: BoxFit.cover,
+            )
+                .clipRounded(16)
+                .onImageTapPreview(context,imageProvider: NetworkImage('https://picsum.photos/300/200')),
+
+            20.spacingY(),
+            _sectionTitle('🎞️ Animation & Effects Extensions'),
+
+            Text('This fades in nicely')
+                .fadeIn()
+                .paddingAll(8)
+                .asCard(),
+
+            10.spacingY(),
+
+            Icon(CupertinoIcons.heart_fill, color: Colors.red, size: 80)
+                .tapScale(onTap: () => '❤️ Liked!'.log()),
+
+
+            10.spacingY(),
+
+            Stack(
+              children: [
+                Image.network(
+                  'https://picsum.photos/400/250',
+                  width: double.infinity,
+                  height: 200,
+                  fit: BoxFit.cover,
+                ),
+                Positioned.fill(
+                  child: Container(
+                    alignment: Alignment.center,
+                    color: Colors.white.withValues(alpha: 0.1),
+                    child: Text(
+                      'Blurred Overlay Text',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ).blurred(sigma: 8),
+                  ),
+                ),
+              ],
+            ).clipRounded(12).paddingAll(8),
+
+            10.spacingY(),
+            Text(
+              'Beautiful Glass Card',
+              style: const TextStyle(fontSize: 18, color: Colors.white),
+            ).asGlassCard(height: 300,width: 300,color: Colors.pinkAccent.withValues(alpha: 0.3)),
+
+            10.spacingY(),
+            Text('Soft UI')
+                .asNeumorphic()
+                .paddingAll(16),
+
+            Text('Gradient Card')
+                .asGradientCard(colors: [Colors.orange, Colors.deepOrange])
+                .paddingAll(16),
+
+
           ],
         ),
       ),
