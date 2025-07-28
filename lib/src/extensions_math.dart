@@ -5,8 +5,17 @@ extension ExMathNotation on int {
   /// Converts an integer to its superscript Unicode string (e.g., 12 → ¹²).
   String toSuperscript() {
     const superscripts = {
-      '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
-      '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹', '-': '⁻'
+      '0': '⁰',
+      '1': '¹',
+      '2': '²',
+      '3': '³',
+      '4': '⁴',
+      '5': '⁵',
+      '6': '⁶',
+      '7': '⁷',
+      '8': '⁸',
+      '9': '⁹',
+      '-': '⁻',
     };
     return toString().split('').map((c) => superscripts[c] ?? '').join();
   }
@@ -14,8 +23,17 @@ extension ExMathNotation on int {
   /// Converts an integer to its subscript Unicode string (e.g., 12 → ₁₂).
   String toSubscript() {
     const subscripts = {
-      '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄',
-      '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉', '-': '₋'
+      '0': '₀',
+      '1': '₁',
+      '2': '₂',
+      '3': '₃',
+      '4': '₄',
+      '5': '₅',
+      '6': '₆',
+      '7': '₇',
+      '8': '₈',
+      '9': '₉',
+      '-': '₋',
     };
     return toString().split('').map((c) => subscripts[c] ?? '').join();
   }
@@ -73,8 +91,11 @@ extension ExNumPower on num {
 
   /// Returns factorial (n!), valid only for integers ≥ 0.
   int get factorial {
-    if (this is! int || this < 0) throw Exception("Factorial only defined for non-negative integers.");
-    return this == 0 ? 1 : List.generate(toInt(), (i) => i + 1).reduce((a, b) => a * b);
+    if (this is! int || this < 0)
+      throw Exception("Factorial only defined for non-negative integers.");
+    return this == 0
+        ? 1
+        : List.generate(toInt(), (i) => i + 1).reduce((a, b) => a * b);
   }
 
   /// Returns value prefixed with a sign symbol.
@@ -105,10 +126,19 @@ extension ExFractionFormat on double {
   /// Returns fraction symbol if matched (e.g., 0.25 → ¼).
   String toFractionSymbol() {
     final fractionMap = {
-      0.25: '¼', 0.5: '½', 0.75: '¾',
-      0.333: '⅓', 0.666: '⅔',
-      0.2: '⅕', 0.4: '⅖', 0.6: '⅗', 0.8: '⅘',
-      0.125: '⅛', 0.375: '⅜', 0.625: '⅝', 0.875: '⅞',
+      0.25: '¼',
+      0.5: '½',
+      0.75: '¾',
+      0.333: '⅓',
+      0.666: '⅔',
+      0.2: '⅕',
+      0.4: '⅖',
+      0.6: '⅗',
+      0.8: '⅘',
+      0.125: '⅛',
+      0.375: '⅜',
+      0.625: '⅝',
+      0.875: '⅞',
     };
     for (final entry in fractionMap.entries) {
       if ((this - entry.key).abs() < 0.01) return entry.value;

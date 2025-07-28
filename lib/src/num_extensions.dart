@@ -17,17 +17,14 @@ extension ExSmartNumberFormat on num {
     String locale = 'en_IN',
     String? symbol,
     int decimalDigits = 2,
-  }) =>
-      NumberFormat.currency(
-        locale: locale,
-        symbol: symbol,
-        decimalDigits: decimalDigits,
-      ).format(this);
+  }) => NumberFormat.currency(
+    locale: locale,
+    symbol: symbol,
+    decimalDigits: decimalDigits,
+  ).format(this);
 
   /// Returns localized string with commas, e.g. 1234567 → 12,34,567 in India.
-  String toLocalized({
-    String locale = 'en_IN',
-  }) =>
+  String toLocalized({String locale = 'en_IN'}) =>
       NumberFormat.decimalPattern(locale).format(this);
 
   /// Returns ordinal format: 1 → 1st, 2 → 2nd, 3 → 3rd, etc.
