@@ -91,8 +91,9 @@ extension ExNumPower on num {
 
   /// Returns factorial (n!), valid only for integers ≥ 0.
   int get factorial {
-    if (this is! int || this < 0)
+    if (this is! int || this < 0) {
       throw Exception("Factorial only defined for non-negative integers.");
+    }
     return this == 0
         ? 1
         : List.generate(toInt(), (i) => i + 1).reduce((a, b) => a * b);
