@@ -1,6 +1,9 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mplix/mplix.dart';
+import 'package:mplix/src/extensions_math.dart';
+import 'package:mplix/src/num_extensions.dart';
 
 void main() {
   runApp(const MplixDemoApp());
@@ -73,7 +76,7 @@ class DemoHomePage extends StatelessWidget {
                 Colors.teal.toHex(),
                 style: const TextStyle(color: Colors.white),
               ),
-            ).fadeIn().paddingAll(8).asCard(),
+            ).fadeIn().withPaddingAll(8).asCard(),
 
             20.spacingY(),
             _sectionTitle('📦 Iterable Extension'),
@@ -132,7 +135,7 @@ class DemoHomePage extends StatelessWidget {
               color: Colors.orange,
               child: const Text(
                 'Tap Me',
-              ).onTap(() => 'Tapped!'.log(tag: 'WIDGET')).paddingAll(8),
+              ).onTap(() => 'Tapped!'.log(tag: 'WIDGET')).withPaddingAll(8),
             ),
 
             20.spacingY(),
@@ -171,7 +174,7 @@ class DemoHomePage extends StatelessWidget {
             20.spacingY(),
             _sectionTitle('🎞️ Animation & Effects Extensions'),
 
-            Text('This fades in nicely').fadeIn().paddingAll(8).asCard(),
+            Text('This fades in nicely').fadeIn().withPaddingAll(8).asCard(),
 
             10.spacingY(),
 
@@ -205,7 +208,7 @@ class DemoHomePage extends StatelessWidget {
                   ),
                 ),
               ],
-            ).clipRounded(12).paddingAll(8),
+            ).clipRounded(12).withPaddingAll(8),
 
             10.spacingY(),
             Text(
@@ -218,11 +221,71 @@ class DemoHomePage extends StatelessWidget {
             ),
 
             10.spacingY(),
-            Text('Soft UI').asNeumorphic().paddingAll(16),
+            Text('Soft UI').asNeumorphic().withPaddingAll(16),
 
             Text('Gradient Card')
                 .asGradientCard(colors: [Colors.orange, Colors.deepOrange])
-                .paddingAll(16),
+                .withPaddingAll(16),
+
+
+            20.spacingY(),
+            _sectionTitle('🔢 Number Formatting Extensions'),
+
+            Text('Clean: ${42.toCleanString()}'),        // 42
+            Text('Clean: ${42.55.toCleanString()}'),     // 42.55
+            Text('Compact: ${1500000.toCompact()}'),     // 1.5M
+            Text('Currency: ${123456.78.toCurrency()}'), // ₹1,23,456.78
+            Text('Localized: ${12345678.toLocalized()}'),// 1,23,45,678
+            Text('Ordinal: ${1.toOrdinal()}'),           // 1st
+            Text('Ordinal: ${2.toOrdinal()}'),           // 2nd
+            Text('Ordinal: ${3.toOrdinal()}'),           // 3rd
+            Text('Ordinal: ${11.toOrdinal()}'),          // 11th
+            Text('Ordinal: ${23.toOrdinal()}'),
+
+
+            20.spacingY(),
+            _sectionTitle("🧮 Math Extensions Demo"),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Square Display (5.square): ${5.square}'),                         // 5²
+                Text('Square Value (5.squareVal): ${5.squareVal}'),                     // 25
+                Text('Cube Display (2.cube): ${2.cube}'),                               // 2³
+                Text('Cube Value (2.cubeVal): ${2.cubeVal}'),                           // 8
+                Text('Power Display (2.toPower(4)): ${2.toPower(4)}'),                 // 2^4
+                Text('Power Value (2.pow(4)): ${2.pow(4)}'),                            // 16
+                Text('Superscript Power (2.toSuperPower(5)): ${2.toSuperPower(5)}'),   // 2⁵
+                Text('Super Power Formula: ${2.asSuperPowerFormula(5)}'),              // 2⁵ = 32
+                Text('Plain Power Formula: ${2.asPowerFormula(5)}'),                   // 2^5 = 32
+                Text('Square Formula: ${3.asSquareFormula()}'),                         // 3² = 9
+                Text('Cube Formula: ${4.asCubeFormula()}'),                             // 4³ = 64
+                Text('Root Display (16.toRoot(2)): ${16.toRoot(2)}'),                   // √16
+                Text('Root Formula (27.asRootFormula(3)): ${27.asRootFormula(3)}'),     // ³√27 = 3.0000
+                Text('Log Base 2: ${8.asLogFormula(2)}'),                               // log₂(8) = 3.0000
+                Text('LaTeX Power: ${2.toLaTeXPower(3)}'),                              // 2^{3}
+                Text('LaTeX Root: ${16.toLaTeXRoot(2)}'),                               // \sqrt{16}
+                Text('Markdown Log: ${8.toMarkdownLog(2)}'),                            // `log_{2}(8)`
+                Text('Perfect Square? (16): ${16.isPerfectSquare}'),                    // true
+                Text('Perfect Cube? (27): ${27.isPerfectCube}'),                        // true
+                Text('Radians (180.toRadians): ${180.toRadians.toStringAsFixed(4)}'),  // 3.1416
+                Text('Degrees (π.toDegrees): ${(3.1416).toDegrees.toStringAsFixed(2)}°'), // 180.00°
+                Text('Factorial (5!): ${5.factorial}'),                                 // 120
+                Text('Factorial Formula: ${5.asFactorialFormula()}'),                   // 5! = 120
+                Text('Signed Symbol (+/-): ${3.signWithSymbol}'),                       // +3
+                Text('Sin(90): ${90.asSinFormula()}'),                                  // sin(90) = 1.0000
+                Text('Cos(180): ${180.asCosFormula()}'),                                // cos(180) = -1.0000
+                Text('Tan(45): ${45.asTanFormula()}'),                                  // tan(45) = 1.0000
+                Text('Fraction Symbol (0.25): ${0.25.toFractionSymbol()}'),            // ¼
+                Text('Fraction Symbol (0.666): ${0.666.toFractionSymbol()}'),          // ⅔
+                Text('Mixed Fraction (1.75): ${1.75.toMixedFraction()}'),              // 1¾
+                Text('Mixed Fraction (0.875): ${0.875.toMixedFraction()}'),            // ⅞
+                Text('Superscript (2023): ${2023.toSuperscript()}'),                   // ²⁰²³
+                Text('Subscript (2023): ${2023.toSubscript()}'),                       // ₂₀₂₃
+              ],
+            ),
+
+
+
           ],
         ),
       ),

@@ -43,6 +43,27 @@ dependencies:
 '12.34'.toDouble();                                  // 12.34
 'Flutter ❤️ :pizza: from :india:'.withEmojis();      // Flutter ❤️ 🍕 from 🇮🇳\
 ```
+```📐 Number Formatting Extensions
+Clean and smart formatting for numbers using intuitive extension methods:
+
+42.toCleanString();          // "42"
+42.5.toCleanString();        // "42.50"
+
+1000.toCompact();            // "1K"
+1500000.toCompact();         // "1.5M"
+
+1000.toCurrency();           // ₹1,000.00 (default locale: en_IN)
+1000.toCurrency(symbol: '\$'); // $1,000.00
+
+1234567.toLocalized();       // "12,34,567" (Indian style by default)
+
+1.toOrdinal();               // "1st"
+2.toOrdinal();               // "2nd"
+3.toOrdinal();               // "3rd"
+11.toOrdinal();              // "11th"
+
+```
+
 
 ### 📆 DateTime Extensions
 
@@ -121,9 +142,9 @@ Colors.green.toHex(leadingHashSign: false); // FF4CAF50
 ```dart
 Text('Click Me').onTap(() => print('Tapped!'));           // Tap handler
 
-Container().paddingAll(8);                                // Padding on all sides
-Text('Custom').paddingOnly(left: 12, top: 8);             // Specific side padding
-Text('Symmetric').paddingSymmetric(horizontal: 16); // Horizontal/Vertical
+Container().withPaddingAll(8);                                // Padding on all sides
+Text('Custom').withPaddingOnly(left: 12, top: 8);             // Specific side padding
+Text('Symmetric').withPaddingSymmetric(horizontal: 16); // Horizontal/Vertical
 Text('Fade In').fadeIn();                                 // Fade-in animation
 
 Icon(Icons.favorite).tapScale(onTap: () {});              // Tap shrink animation
@@ -175,6 +196,21 @@ context.copyToClipboard('Secret Key', successMessage: 'Copied to clipboard!');
 'Something went wrong'.log();                     // Logs to debug console
 'Page Loaded'.log(tag: 'INIT');                   // [INIT] Page Loaded
 ```
+### 🧮 Math Extensions
+Helper extensions to display math expressions cleanly on UI, similar to how they're shown in math books.
+```dart
+Text('Square Value: ${5.square}'),                    // 5²
+Text('Cube Display: ${2.cube}'),                      // 2³
+Text('Power UI: ${2.toSuperPower(5)}'),               // 2⁵
+Text('Power Formula: ${2.asSuperPowerFormula(5)}'),   // 2⁵ = 32
+Text('Root Display: ${16.toRoot(2)}'),                // √16
+Text('Root Formula: ${27.asRootFormula(3)}'),         // ³√27 = 3.0000
+Text('Fraction: ${0.25.toFractionSymbol()}'),         // ¼
+Text('Mixed: ${1.75.toMixedFraction()}'),             // 1¾
+Text('Log Base 2: ${8.asLogFormula(2)}'),             // log₂(8) = 3.0000
+
+```
+You can format powers, roots, logs, and common fractions in a visually clean and math-friendly way. Ideal for math-based learning or quiz apps.
 
 ### 📌 More Coming Soon...
 We’re continuously improving Mplix – more utility extensions, emoji packs, and integration widgets are on the way!

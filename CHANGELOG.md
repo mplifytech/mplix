@@ -16,3 +16,6 @@
 
 ## 0.0.6
 *  Added more widget extensions: animations, blur, tap effects, glass cards, and more — all minimal, reusable, and customizable.
+
+## 0.0.7
+*  Added more extensions: Num and math extensions. Improved padding related extension to remove conflicts.

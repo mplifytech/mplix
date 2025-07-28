@@ -20,11 +20,11 @@ extension ExTapExtension on Widget {
 /// Extension on [Widget] for adding padding.
 extension ExPadding on Widget {
   /// Applies equal padding on all sides.
-  Widget paddingAll(double value) =>
+  Widget withPaddingAll(double value) =>
       Padding(padding: EdgeInsets.all(value), child: this);
 
   /// Applies horizontal and vertical symmetric padding.
-  Widget paddingSymmetric({double horizontal = 0, double vertical = 0}) =>
+  Widget withPaddingSymmetric({double horizontal = 0, double vertical = 0}) =>
       Padding(
         padding: EdgeInsets.symmetric(
           horizontal: horizontal,
@@ -34,7 +34,7 @@ extension ExPadding on Widget {
       );
 
   /// Applies padding to specific sides.
-  Widget paddingOnly({
+  Widget withPaddingOnly({
     double left = 0,
     double top = 0,
     double right = 0,
