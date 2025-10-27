@@ -434,7 +434,6 @@ extension ExGradientCard on Widget {
   }
 }
 
-
 /// Extension on [Widget] to apply a shimmer loading effect.
 ///
 /// Example:
@@ -456,4 +455,3 @@ extension ExShimmer on Widget {
     );
   }
 }
-

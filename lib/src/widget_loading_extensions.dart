@@ -49,7 +49,6 @@ enum LoadingSpinnerType {
   cubeGrid,
 }
 
-
 /// Extension on [Widget] to wrap it as a professional, highly customizable
 /// full-screen loading overlay.
 ///
@@ -92,20 +91,21 @@ extension ExLoadingScreen on Widget {
           child: TweenAnimationBuilder<double>(
             tween: Tween(begin: 0, end: 1),
             duration: fadeDuration,
-            builder: (context, value, child) => Opacity(
-              opacity: value,
-              child: child,
-            ),
+            builder:
+                (context, value, child) =>
+                    Opacity(opacity: value, child: child),
             child: Center(
-              child: customChild ?? _defaultLoadingContent(
-                spinnerType,
-                spinnerSize,
-                spinnerColor,
-                message,
-                subMessage,
-                messageStyle,
-                subMessageStyle,
-              ),
+              child:
+                  customChild ??
+                  _defaultLoadingContent(
+                    spinnerType,
+                    spinnerSize,
+                    spinnerColor,
+                    message,
+                    subMessage,
+                    messageStyle,
+                    subMessageStyle,
+                  ),
             ),
           ),
         ),
@@ -115,14 +115,14 @@ extension ExLoadingScreen on Widget {
 
   /// Default loading content (SpinKit + optional messages)
   Widget _defaultLoadingContent(
-      LoadingSpinnerType spinnerType,
-      double spinnerSize,
-      Color spinnerColor,
-      String? message,
-      String? subMessage,
-      TextStyle? messageStyle,
-      TextStyle? subMessageStyle,
-      ) {
+    LoadingSpinnerType spinnerType,
+    double spinnerSize,
+    Color spinnerColor,
+    String? message,
+    String? subMessage,
+    TextStyle? messageStyle,
+    TextStyle? subMessageStyle,
+  ) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -132,7 +132,8 @@ extension ExLoadingScreen on Widget {
           Text(
             message,
             textAlign: TextAlign.center,
-            style: messageStyle ??
+            style:
+                messageStyle ??
                 TextStyle(
                   color: spinnerColor,
                   fontSize: 18,
@@ -145,7 +146,8 @@ extension ExLoadingScreen on Widget {
           Text(
             subMessage,
             textAlign: TextAlign.center,
-            style: subMessageStyle ??
+            style:
+                subMessageStyle ??
                 TextStyle(
                   color: spinnerColor.withValues(alpha: 0.8),
                   fontSize: 14,
@@ -165,7 +167,11 @@ extension ExLoadingScreen on Widget {
       case LoadingSpinnerType.fadingCube:
         return SpinKitFadingCube(color: color, size: size);
       case LoadingSpinnerType.wave:
-        return SpinKitWave(color: color, size: size, type: SpinKitWaveType.center);
+        return SpinKitWave(
+          color: color,
+          size: size,
+          type: SpinKitWaveType.center,
+        );
       case LoadingSpinnerType.ring:
         return SpinKitRing(color: color, size: size, lineWidth: 4.0);
       case LoadingSpinnerType.doubleBounce:

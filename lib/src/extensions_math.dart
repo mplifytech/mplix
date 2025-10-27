@@ -116,7 +116,12 @@ extension ExNumPower on num {
 
   /// Returns LaTeX root style: \sqrt[n]{x}
   String toLaTeXRoot(int n) =>
-      n == 2 ? r'\sqrt{' '$this}' : r'\sqrt[' '$n]{' '$this}';
+      n == 2
+          ? r'\sqrt{'
+              '$this}'
+          : r'\sqrt['
+              '$n]{'
+              '$this}';
 
   /// Returns Markdown-style math: `log_{2}(8)`
   String toMarkdownLog(num base) => r'`log_{$base}($this)`';
