@@ -51,10 +51,10 @@ extension ExNumPower on num {
   num get cubeVal => this * this * this;
 
   /// Returns the number with a square (²) symbol.
-  String get square => '${this}²';
+  String get square => '$this²';
 
   /// Returns the number with a cube (³) symbol.
-  String get cube => '${this}³';
+  String get cube => '$this³';
 
   /// Returns a plain power string like 2^3.
   String toPower(num exp) => '$this^$exp';

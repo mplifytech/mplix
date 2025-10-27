@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mplix/mplix.dart';
-import 'package:mplix/src/extensions_math.dart';
-import 'package:mplix/src/num_extensions.dart';
 
 void main() {
   runApp(const MplixDemoApp());
