@@ -22,3 +22,6 @@
 
 ## 0.0.8
 *  Added more extensions: Num and math extensions. Improved padding related extension to remove conflicts.
+
+## 0.0.9
+*  Enhancements in extensions_math file.  New extensions added loading and shimmer extensions.

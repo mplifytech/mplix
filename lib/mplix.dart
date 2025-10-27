@@ -6,3 +6,4 @@ export 'src/widget_extensions.dart';
 export 'src/color_extensions.dart';
 export 'src/num_extensions.dart';
 export 'src/extensions_math.dart';
+export 'src/widget_loading_extensions.dart';

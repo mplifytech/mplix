@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 /// Extension on [Widget] to provide a `.onTap()` method for adding tap handlers.
 extension ExTapExtension on Widget {
@@ -432,3 +433,27 @@ extension ExGradientCard on Widget {
     );
   }
 }
+
+
+/// Extension on [Widget] to apply a shimmer loading effect.
+///
+/// Example:
+/// ```dart
+/// Container(height: 20, width: 100, color: Colors.grey).asShimmer();
+/// ```
+extension ExShimmer on Widget {
+  /// Wraps the widget with a shimmer effect (animated gradient overlay).
+  Widget asShimmer({
+    Color baseColor = const Color(0xFFE0E0E0),
+    Color highlightColor = const Color(0xFFF5F5F5),
+    Duration period = const Duration(seconds: 2),
+  }) {
+    return Shimmer.fromColors(
+      baseColor: baseColor,
+      highlightColor: highlightColor,
+      period: period,
+      child: this,
+    );
+  }
+}
+

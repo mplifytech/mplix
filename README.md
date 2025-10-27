@@ -212,6 +212,89 @@ Text('Log Base 2: ${8.asLogFormula(2)}'),             // log₂(8) = 3.0000
 ```
 You can format powers, roots, logs, and common fractions in a visually clean and math-friendly way. Ideal for math-based learning or quiz apps.
 
+### Full-Screen Loading Extension
+
+Mplix provides a highly customizable full-screen loader that can display spinners, images, or icons along with primary and secondary messages. Works with Flutter Web, Mobile, and Desktop.
+```dart
+// Example: Full-screen loader with icon/image
+ElevatedButton(
+  onPressed: () {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Container().asLoadingScreen(
+          blur: 8.0,
+          backgroundColor: Colors.black.withOpacity(0.6),
+          fadeDuration: const Duration(milliseconds: 500),
+          customChild: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.network(
+                'https://img.icons8.com/ios-filled/100/cloud-download.png',
+                width: 60,
+                height: 60,
+                color: Colors.deepPurple,
+              ),
+              const SizedBox(height: 20),
+              SpinKitFadingCube(
+                color: Colors.deepPurpleAccent,
+                size: 50,
+              ),
+              const SizedBox(height: 20),
+              Text(
+                "Fetching data...",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                "Please wait a moment",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white.withOpacity(0.8),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.of(context).pop();
+      context.showSnackbar("Data loaded successfully!");
+    });
+  },
+  child: const Text('Show Full-Screen Loader with Icon'),
+);
+
+```
+### Shimmer Loading Effect Extension
+```dart
+// Basic shimmer effect
+Container(height: 20, width: 100, color: Colors.grey).asShimmer();
+
+// Custom shimmer
+Container(
+  height: 20,
+  width: 150,
+  color: Colors.grey.shade400,
+).asShimmer(
+  baseColor: Colors.grey.shade400,
+  highlightColor: Colors.grey.shade200,
+  period: const Duration(seconds: 1),
+);
+
+```
+
 ### 📌 More Coming Soon...
 We’re continuously improving Mplix – more utility extensions, emoji packs, and integration widgets are on the way!
 

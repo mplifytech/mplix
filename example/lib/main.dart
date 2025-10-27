@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:mplix/mplix.dart';
 
 void main() {
@@ -292,6 +293,95 @@ class DemoHomePage extends StatelessWidget {
                 Text('Subscript (2023): ${2023.toSubscript()}'), // ₂₀₂₃
               ],
             ),
+            20.spacingY(),
+            _sectionTitle('🌀 Full-Screen Loading Demo with Icon/Image'),
+            ElevatedButton(
+              onPressed: () {
+                // Overlay your entire Scaffold body with a loading screen
+                showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (context) => Scaffold(
+                    backgroundColor: Colors.transparent,
+                    body: Container().asLoadingScreen(
+                      blur: 8.0,
+                      backgroundColor: Colors.black.withValues(alpha: 0.6),
+                      fadeDuration: const Duration(milliseconds: 500),
+                      customChild: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          // Optional icon or image at the top
+                          const Icon(
+                            Icons.cloud_download,
+                            size: 60,
+                            color: Colors.deepPurple,
+                          ),
+                          const SizedBox(height: 20),
+
+                          // Spinner below the icon
+                          SpinKitFadingCube(
+                            color: Colors.deepPurpleAccent,
+                            size: 50,
+                          ),
+                          const SizedBox(height: 20),
+
+                          // Messages below
+                          Text(
+                            "Fetching data...",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            "Please wait a moment",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white.withValues(alpha: 0.8),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+
+                // Simulate a delay then close the loader
+                Future.delayed(const Duration(seconds: 3), () {
+                  Navigator.of(context).pop(); // Close the loading dialog
+                  context.showSnackbar("Data loaded successfully!");
+                });
+              },
+              child: const Text('Show Full-Screen Loader with Icon'),
+            ),
+            20.spacingY(),
+            _sectionTitle('✨ Shimmer Demo'),
+            Row(
+              children: [
+                Container(
+                  height: 20,
+                  width: 100,
+                  color: Colors.grey,
+                ).asShimmer(), // basic shimmer
+                10.spacingX(),
+                Container(
+                  height: 20,
+                  width: 150,
+                  color: Colors.grey.shade400,
+                ).asShimmer(
+                  baseColor: Colors.grey.shade400,
+                  highlightColor: Colors.grey.shade200,
+                  period: const Duration(seconds: 1),
+                ),
+              ],
+            ),
+
+
           ],
         ),
       ),
