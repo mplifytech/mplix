@@ -100,23 +100,23 @@ extension ExNumPower on num {
   }
 
   /// Returns value prefixed with a sign symbol.
-  String get signWithSymbol => this >= 0 ? '+$this' : this.toString();
+  String get signWithSymbol => this >= 0 ? '+$this' : toString();
 
   /// Returns sin(this) in radians.
-  double get sinRad => math.sin(this.toDouble());
+  double get sinRad => math.sin(toDouble());
 
   /// Returns cos(this) in radians.
-  double get cosRad => math.cos(this.toDouble());
+  double get cosRad => math.cos(toDouble());
 
   /// Returns tan(this) in radians.
-  double get tanRad => math.tan(this.toDouble());
+  double get tanRad => math.tan(toDouble());
 
   /// Returns LaTeX style power notation: x^{y}
   String toLaTeXPower(num exp) => '$this^{${exp.toInt()}}';
 
   /// Returns LaTeX root style: \sqrt[n]{x}
   String toLaTeXRoot(int n) =>
-      n == 2 ? r'\sqrt{' + '$this}' : r'\sqrt[' + '$n]{' + '$this}';
+      n == 2 ? r'\sqrt{' '$this}' : r'\sqrt[' '$n]{' '$this}';
 
   /// Returns Markdown-style math: `log_{2}(8)`
   String toMarkdownLog(num base) => r'`log_{$base}($this)`';

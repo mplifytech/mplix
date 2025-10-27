@@ -25,3 +25,6 @@
 
 ## 0.0.9
 *  Enhancements in extensions_math file.  New extensions added loading and shimmer extensions.
+
+* ## 0.0.10
+*  Enhancements in extensions_math file.
